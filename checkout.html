@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">🛒 Checkout</h1>
+            <a href="dashboard.html" class="btn btn-back">← Back to Products</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="checkout-wrapper">
+            <!-- Delivery Address Form -->
+            <div class="checkout-form">
+                <h2>Delivery Address</h2>
+                <form id="checkoutForm" onsubmit="placeOrder(event)">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="10-digit number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" name="pincode" placeholder="6-digit pincode" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod" name="paymentMethod" required onchange="showPaymentMethod()">
+                            <option value="">Select Payment Method</option>
+                            <option value="card">Credit/Debit Card</option>
+                            <option value="upi">UPI</option>
+                            <option value="netbanking">NetBanking</option>
+                            <option value="cod">Cash on Delivery</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Payment QR Code Display -->
+                    <div id="paymentQRSection" class="payment-qr-section" style="display: none;">
+                        <h3>Complete Payment</h3>
+                        <div class="qr-container">
+                            <div id="qrCodeDisplay" class="qr-code-display"></div>
+                            <p id="paymentInstructions" class="payment-instructions"></p>
+                        </div>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="paymentConfirm" required>
+                            I have completed the payment
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Place Order</button>
+                </form>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-item">
+                    <span>Product Price:</span>
+                    <span id="productPrice">₹0</span>
+                </div>
+                <div class="summary-item">
+                    <span>Shipping Charges:</span>
+                    <span id="shippingCharges">₹0</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-item total">
+                    <span>Total Amount:</span>
+                    <span id="totalAmount">₹0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize checkout page
+        document.addEventListener('DOMContentLoaded', function() {
+            const productPrice = localStorage.getItem('productPrice');
+            
+            if (!productPrice) {
+                alert('No product selected! Redirecting to dashboard.');
+                window.location.href = 'dashboard.html';
+                return;
+            }
+            
+            const price = parseInt(productPrice);
+            const shippingCharges = 99;
+            const totalAmount = price + shippingCharges;
+            
+            document.getElementById('productPrice').textContent = '₹' + price.toLocaleString('en-IN');
+            document.getElementById('shippingCharges').textContent = '₹' + shippingCharges.toLocaleString('en-IN');
+            document.getElementById('totalAmount').textContent = '₹' + totalAmount.toLocaleString('en-IN');
+        });
+    </script>
+</body>
+</html>

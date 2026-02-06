@@ -1,0 +1,513 @@
+/* ================================
+   GLOBAL STYLES & RESET
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* ================================
+   LOGIN PAGE STYLES
+   ================================ */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    padding: 20px;
+}
+
+.login-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card h1 {
+    color: #1e3c72;
+    font-size: 28px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.login-subtitle {
+    color: #666;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* ================================
+   FORM STYLES
+   ================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1e3c72;
+    background-color: #f9f9f9;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ================================
+   ERROR MESSAGE
+   ================================ */
+.error-message {
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    display: none;
+    border-left: 4px solid #d32f2f;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* ================================
+   BUTTON STYLES
+   ================================ */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: #ff9800;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #f57c00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn-logout {
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    font-size: 13px;
+}
+
+.btn-logout:hover {
+    background-color: #b71c1c;
+}
+
+.btn-back {
+    background-color: #1e3c72;
+    color: white;
+    padding: 10px 15px;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-back:hover {
+    background-color: #153a5c;
+}
+
+/* ================================
+   DEMO CREDENTIALS
+   ================================ */
+.demo-credentials {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #e3f2fd;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #0d47a1;
+    border-left: 4px solid #1e3c72;
+    line-height: 1.8;
+}
+
+.demo-credentials code {
+    background-color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+}
+
+/* ================================
+   NAVBAR STYLES
+   ================================ */
+.navbar {
+    background-color: #1e3c72;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* ================================
+   CONTAINER & LAYOUT
+   ================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    font-size: 28px;
+    color: #1e3c72;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* ================================
+   PRODUCTS GRID
+   ================================ */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff9800;
+    margin-bottom: 15px;
+}
+
+/* ================================
+   CHECKOUT PAGE STYLES
+   ================================ */
+.checkout-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.checkout-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form h2 {
+    color: #1e3c72;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.order-summary {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.order-summary h2 {
+    color: #1e3c72;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    font-size: 15px;
+}
+
+.summary-item span:first-child {
+    color: #666;
+}
+
+.summary-item span:last-child {
+    font-weight: 600;
+    color: #1e3c72;
+}
+
+.summary-divider {
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: 15px 0;
+}
+
+.summary-item.total {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ff9800;
+}
+
+.summary-item.total span:last-child {
+    color: #ff9800;
+}
+
+/* ================================
+   PAYMENT QR SECTION STYLES
+   ================================ */
+.payment-qr-section {
+    background-color: #f0f7ff;
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.payment-qr-section h3 {
+    color: #1e3c72;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.qr-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.qr-code-display {
+    display: inline-block;
+    padding: 15px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.qr-code-display svg {
+    width: 250px;
+    height: 250px;
+    border-radius: 6px;
+}
+
+.payment-instructions {
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 15px;
+    line-height: 1.8;
+}
+
+.payment-instructions strong {
+    color: #ff9800;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #ff9800;
+}
+
+.payment-success-msg {
+    background-color: #c8e6c9;
+    color: #2e7d32;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid #2e7d32;
+    font-size: 14px;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+@media (max-width: 768px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .checkout-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .order-summary {
+        position: static;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-title {
+        font-size: 18px;
+    }
+    
+    .container {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 20px;
+    }
+    
+    .login-card h1 {
+        font-size: 24px;
+    }
+    
+    .product-image-wrapper {
+        height: 200px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+}

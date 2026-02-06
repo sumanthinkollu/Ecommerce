@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">📦 Product Dashboard</h1>
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+        });
+        
+        function loadProducts() {
+            const products = [
+                {
+                    id: 1,
+                    name: "Laptop Pro",
+                    price: 89999,
+                    image: "images/product1.jpg"
+                },
+                {
+                    id: 2,
+                    name: "Wireless Headphones",
+                    price: 4999,
+                    image: "images/product2.jpg"
+                },
+                {
+                    id: 3,
+                    name: "Smart Watch",
+                    price: 12999,
+                    image: "images/product3.jpg"
+                }
+            ];
+            
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image-wrapper">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-price">₹${product.price.toLocaleString('en-IN')}</p>
+                        <button class="btn btn-primary btn-full" onclick="buyNow(${product.price})">
+                            Buy Now
+                        </button>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+        }
+    </script>
+</body>
+</html>
